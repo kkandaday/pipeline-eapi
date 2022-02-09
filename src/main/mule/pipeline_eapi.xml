@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<flow name="pipeline_eapiFlow" doc:id="1b13c49f-1c8d-4c65-ac61-7b60b31c6ce5" >
+		<http:listener doc:name="Listener" doc:id="3697050f-1fa7-42d9-959a-4e267e5db66c" config-ref="HTTP_Listener_config_EAPI" path="/api"/>
+		<logger level="INFO" doc:name="Entry" doc:id="02aee5b4-ebc2-4b57-89df-b9bd34357773" message="pipeline_eapiFlow -ENTRY"/>
+		<http:request method="GET" doc:name="Call Process API" doc:id="ac2fa6dd-dd3a-4744-8e8b-503ff4f2d538" path="/api" config-ref="HTTP_Request_configuration_PAPI"/>
+		<logger level="DEBUG" doc:name="Response From Process API" doc:id="0572b2b6-bd7f-483f-b758-51baa6dbc1ae" message="Response from Process API  : #[payload]"/>
+		<logger level="INFO" doc:name="Exit" doc:id="56842126-d0f8-410e-92f6-656456936227" message="pipeline_eapiFlow -EXIT"/>
+	</flow>
+</mule>

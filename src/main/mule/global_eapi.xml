@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config_EAPI" doc:name="HTTP Listener config" doc:id="e8f75cf9-6b19-49b6-9775-bb236df1fb31" basePath="/ppl_exp" >
+		<http:listener-connection host="0.0.0.0" port="8086" />
+	</http:listener-config>
+	<http:request-config name="HTTP_Request_configuration_PAPI" doc:name="HTTP Request configuration" doc:id="bbbe70e4-2063-4ab1-a3bb-67ee81b880d9" basePath="/ppl_process" >
+		<http:request-connection host="localhost" port="8087" />
+	</http:request-config>
+	<configuration doc:name="Configuration" doc:id="73c3b327-4d46-4911-81ff-f43ef2ca3bf1" correlationIdGeneratorExpression="#[uuid() replace '-' with '']" />
+	<import doc:name="Import" doc:id="0af61848-37c2-4fe4-addf-4dcd095d7d1f" file="pipelineevent.xml" />
+	<configuration-properties doc:name="Configuration properties" doc:id="47f9f00c-c96a-4159-9f0a-e8655e8a26ad" file="mule-app.properties" />
+</mule>
